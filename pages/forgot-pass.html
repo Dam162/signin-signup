@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password</title>
+    <link rel="stylesheet" href="./../css/forgot-pass.css">
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-auth.js"></script>
+    <script src="https://kit.fontawesome.com/979ca7ab37.js" crossorigin="anonymous"></script>
+    <script src="./../js/config-js.js"></script>
+</head>
+
+<body>
+    <div class="container" id="container">
+		<div class="form-container forgot-pass-container">
+			<form onsubmit="forgotPasswordHandler(); return false">
+				<h1>Forgot Password</h1>
+				<div class="social-container">
+					<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+					<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+					<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+				</div>
+				<span>Enter your email for password reset.</span>
+				<input type="email" id="email" placeholder="Email" required />		
+				<p id="message"></p>
+				<input type="submit" value="Send" class="send">
+			</form>
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-right">
+					<h1>Get Login!</h1>
+					<p>If you have successfully reseted your password than click on login.</p>
+					<button onclick="login()" class="ghost" id="login">login</button>
+				</div>
+			</div>
+		</div>
+	</div>
+    <footer>
+        <p>
+            Created with <i class="fa fa-heart"></i> by
+            <a target="_blank" href="https://florin-pop.com">Florin Pop</a>
+            - Read how I created this and how you can join the challenge
+            <a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
+        </p>
+    </footer>
+    <script src="./../js/forgot-pass.js"></script>
+
+</body>
+
+</html>

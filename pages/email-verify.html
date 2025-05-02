@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Email Verification</title>
+	<link rel="stylesheet" href="./../css/email-verify.css">
+	<script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-auth.js"></script>
+	<script src="https://kit.fontawesome.com/979ca7ab37.js" crossorigin="anonymous"></script>
+	<script src="./../js/config-js.js"></script>
+</head>
+
+<body>
+	<div class="container" id="container">
+		<div class="form-container email-verify-container">
+			<div id="email-verify-sec">
+				<h1>Email Verification</h1>
+				<div class="social-container">
+					<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+					<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+					<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+				</div>
+				<span>Please, verify your email first!</span>
+				<p id="email">Loading.......</p>
+				<p id="message"></p>
+				<button onclick="resendHandler()" class="resend">Resend</button>
+				
+			</div>
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-right">
+					<h1>Go Home</h1>
+					<p>If your email verification is completed</p>
+					<button onclick="goHomeHandler()" class="ghost" id="goHome">Go Home</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<p>
+			Created with <i class="fa fa-heart"></i> by
+			<a target="_blank" href="https://florin-pop.com">Florin Pop</a>
+			- Read how I created this and how you can join the challenge
+			<a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
+		</p>
+	</footer>
+    <script src="./../js/email-verify.js"></script>
+</body>
+</html>
