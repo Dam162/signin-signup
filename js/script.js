@@ -23,19 +23,53 @@ signInButton.addEventListener('click', () => {
 
 // signup handler
 const signUpHandler = () => {
+
+	const name = nameSignUp.value;
+
 	message.style.display = "block";
 
-	console.log(nameSignUp.value);
+	console.log(name);
 	console.log(emailSignUp.value);
 	console.log(passwordSignUp.value);
 
 	firebase.auth().createUserWithEmailAndPassword(emailSignUp.value, passwordSignUp.value)
 		.then((userCredential) => {
+
+			var user = userCredential.user;
+
+			if (user !== null) {
+				const displayName = user.displayName;
+				const email = user.email;
+				const photoURL = user.photoURL;
+				const emailVerified = user.emailVerified;
+
+				// The user's ID, unique to the Firebase project. Do NOT use
+				// this value to authenticate with your backend server, if
+				// you have one. Use User.getIdToken() instead.
+				const uid = user.uid;
+				user.providerData.forEach((profile) => {
+					console.log("Sign-in provider: " + profile.providerId);
+					console.log("  Provider-specific UID: " + profile.uid);
+					console.log("  Name: " + profile.displayName);
+					console.log("  Email: " + profile.email);
+					console.log("  Photo URL: " + profile.photoURL);
+				});
+			}
+			user.updateProfile({
+				displayName: name,
+				photoURL: "https://example.com/jane-q-user/profile.jpg"
+			}).then(() => {
+				// Update successful
+				// ...
+			}).catch((error) => {
+				// An error occurred
+				// ...
+			});
+
 			firebase
 				.auth()
 				.currentUser.sendEmailVerification()
 				.then(() => {
-					var user = userCredential.user;
 					message.style.color = "green";
 					message.innerHTML = "Success!";
 					console.log(user);
@@ -79,9 +113,9 @@ const signInHandler = () => {
 			setTimeout(function () {
 				messageTwo.innerHTML = "";
 				messageTwo.style.display = "none";
-				if(userCredential.user.emailVerified){
+				if (userCredential.user.emailVerified) {
 					window.location.assign("./home.html");
-				}else{
+				} else {
 					window.location.assign("./signin_signup.html");
 				}
 			}, 2000);
