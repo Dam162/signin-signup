@@ -80,7 +80,7 @@ footer a {
       var(--c) 100% 50%, 
       var(--c) 0    50%;
     background-size: 12px 12px;
-    animation: l12 1s infinite;
+    animation: l12 s infinite;
   }
   .loader::before {
     margin: 4px;
@@ -92,3 +92,4 @@ footer a {
   @keyframes l12 { 
     100%{transform: rotate(.5turn)}
   }
+

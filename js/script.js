@@ -153,3 +153,55 @@ const showPasswordSnUp = () => {
 		passwordSignUp.type = "password";
 	}
 }
+
+
+
+// sign in with google
+
+const signInWithGoogleHandler = () => {
+	messageTwo.style.display = "block";
+	var provider = new firebase.auth.GoogleAuthProvider();
+	firebase.auth()
+		.signInWithPopup(provider)
+		.then((result) => {
+			var user = result.user;
+			console.log("user", user);
+			window.location.assign("home.html");
+		}).catch((error) => {
+			var errorMessage = error.message;
+			console.log("errorMessage", errorMessage);
+			messageTwo.style.color = "red";
+			messageTwo.innerHTML = errorMessage;
+			console.log(errorMessage);
+			setTimeout(function () {
+				messageTwo.innerHTML = "";
+				messageTwo.style.display = "none";
+			}, 2000);
+
+		});
+}
+
+
+const signInWithFacebookHandler = () => {
+	messageTwo.style.display = "block";
+	var provider = new firebase.auth.FacebookAuthProvider();
+	firebase
+		.auth()
+		.signInWithPopup(provider)
+		.then((result) => {
+			var user = result.user;
+			console.log("user", user);
+			window.location.assign("./home.html");
+		})
+		.catch((error) => {
+			var errorMessage = error.message;
+			console.log("errorMessage", errorMessage);
+			messageTwo.style.color = "red";
+			messageTwo.innerHTML = errorMessage;
+			console.log(errorMessage);
+			setTimeout(function () {
+				messageTwo.innerHTML = "";
+				messageTwo.style.display = "none";
+			}, 2000);
+		});
+}
